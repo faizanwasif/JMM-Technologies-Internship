@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 255);
             $table->text('content');
-            $table->string('pubdate');
+            $table->date('pubdate');
             $table->unsignedBigInteger('cat_id')->default(0);
             $table->foreign('cat_id')->references('id')->on('categories');
             $table->timestamps();

@@ -3,8 +3,7 @@
 @section('content')
     <h1>Edit Record</h1>
 
-
-    <form method="post" action="{{ route('category.update' , ['category' => $category]) }}">
+    <form method="post" action="{{ route('category.update' , ['category' => $category]) }}" class="insertion">
 
         @csrf
         @method('put')
@@ -20,8 +19,11 @@
         
         <br><br>
         
-        <input type="submit" value="Update book">
+        <input type="submit" value="Update Category">
         
+    </form>
+    <form action="{{ route('category.show') }}" style='text-align: center; margin-top: 20px;' >
+        <button type='submit'class="addBtn">Show Categories</button>
     </form>
 
 @endsection

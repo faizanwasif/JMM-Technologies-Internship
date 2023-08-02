@@ -1,0 +1,88 @@
+body{
+    text-align: center;
+}
+table{
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+table, th, td {
+    width: 600px;
+    height: 30px;
+    border: 2px solid;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* CSS for the form container */
+.insertion{
+    text-align: center;
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  /* CSS for form labels */
+  form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px; /* Optional: Add some spacing between labels and inputs */
+  }
+  
+  /* CSS for form inputs */
+  form input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* CSS for the submit button */
+  form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 200px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* Optional: Center the submit button */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.addBtn{
+  height:50px; 
+  width: 100%; 
+  max-width: 200px; 
+  background-color: #f5b400;
+  color: white; 
+  border: none; 
+  cursor: pointer;
+}
+
+form select {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+form select {
+  appearance: none;
+  background-size: 20px;
+  cursor: pointer;
+}
+  

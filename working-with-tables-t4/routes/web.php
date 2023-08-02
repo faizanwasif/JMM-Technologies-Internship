@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\CategoryController@index');
 Route::get('/category', 'App\Http\Controllers\CategoryController@index')->name('category.show');
 
+// to fetch posts
+Route::get('/{category}/posts', 'App\Http\Controllers\CategoryController@showPost')->name('category.showPost');
+
 Route::get('/category/create', 'App\Http\Controllers\CategoryController@create')->name('category.create');
 
 // to add data

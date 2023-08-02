@@ -27,7 +27,7 @@
             <input type="text" name="content" style="display: block; hieght:40px; width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
             
             <label for="pubdate" style="display: block; font-weight: bold;">Publication Date</label>
-            <input type="string" name="pubdate">
+            <input type="date" name="pubdate">
             
             <select name="cat_id" id="cat_id">
                 @foreach ($catInfo as $cat)
@@ -38,6 +38,9 @@
             <br><br>
             <input type="submit" value="Add Blog" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px; cursor: pointer;">
     
+        </form>
+        <form action="{{ route('post.show') }}" style='text-align: center; margin-top: 20px;'>
+            <button type='submit' class="addBtn">Show Posts</button>
         </form>
     </div>
 @endsection

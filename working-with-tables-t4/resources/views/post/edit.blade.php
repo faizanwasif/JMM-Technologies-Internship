@@ -13,7 +13,7 @@
             </div>
         @endif
         
-    <form method="post" action="{{ route('post.update' , ['post' => $post, 'postInfo' => $postInfo]) }}">
+    <form method="post" action="{{ route('post.update' , ['post' => $post, 'postInfo' => $postInfo]) }}" class="insertion">
 
         @csrf
         @method('put')
@@ -29,7 +29,7 @@
         <br><br>
 
         <label for="pubdate">Publication Date</label>
-        <input type="text" name="pubyear" value="{{ $post->pubdate}}">        
+        <input type="date" name="pubyear" value="{{ $post->pubdate}}">        
         
         <br><br>
 
@@ -41,8 +41,11 @@
             @endforeach
         </select>
         <br><br>
-        <input type="submit" value="Update book">
+        <input type="submit" value="Update post">
         
+    </form>
+    <form action="{{ route('post.show') }}" style='text-align: center; margin-top: 20px;'>
+        <button type='submit' class="addBtn">Show Posts</button>
     </form>
 
 @endsection

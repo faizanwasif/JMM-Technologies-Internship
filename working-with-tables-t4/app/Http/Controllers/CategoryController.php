@@ -49,8 +49,22 @@ class CategoryController extends Controller
         return redirect(route('category.add'))->with('success', 'Category updated succesfully!');
     }
 
+    public function showPost(Category $category )
+    {
+        // Get all posts belonging to the category
+        // dd(['category'=> $category->id]);
+
+
+        //  dd(Post::where(["cat_id"=>$category->id])->get());
+        $posts = Post::where(["cat_id"=>$category->id])->get();
+
+        return view('category.showPosts', ['posts'=>$posts]);
+        // return $posts;
+    }
+
     public function destroy(Category $category)
     {
+         //dd($category->id);
         // Get all posts belonging to the category
         $posts = Post::where('cat_id', $category->id)->get();
 
@@ -59,9 +73,11 @@ class CategoryController extends Controller
             $post->delete();
         }
 
-        // Now you can delete the category
+        // delete the category
         $category->delete();
 
-        return redirect(route('post.show'))->with('success', 'Category deleted successfully!');
+        return redirect(route('category.show'))->with('success', 'Category deleted successfully!');
     }
+
+    
 }

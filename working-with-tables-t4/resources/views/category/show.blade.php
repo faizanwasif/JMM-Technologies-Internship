@@ -7,6 +7,7 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>Posts</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -15,6 +16,9 @@
             <tr>
                 <td>{{ $category['name'] }}</td>
                 <td>{{ $category['desc'] }}</td>
+                <td style='background-color: rgb(162, 255, 0); padding: 5px;'>
+                    <a href="{{ route('category.showPost', ['category' => $category] ) }}">Show</a>
+                </td>
 
                 <td style='background-color: rgb(0, 174, 255); padding: 5px;'>
                     <a href="{{ route('category.edit', ['category' => $category] ) }}">Edit</a>
@@ -30,6 +34,9 @@
         @endforeach
     </table>
     <form action="{{ route('category.create') }}" style='text-align: center; margin-top: 20px;'>
-        <button type='submit' style='height:50px; width: 100%; max-width: 200px; background-color: #4CAF50; color: white; border: none; cursor: pointer;'>Add Blogs</button>
+        <button type='submit' style='height:50px; width: 100%; max-width: 200px; background-color: #4CAF50; color: white; border: none; cursor: pointer;'>Add Category</button>
+    </form>
+    <form action="{{ route('post.show') }}" style='text-align: center; margin-top: 20px;'>
+        <button type='submit' class="addBtn">Show Posts</button>
     </form>
 @endsection
