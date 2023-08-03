@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Country;
+use App\Models\State;
+use App\Models\City;
 
 class CountryController extends Controller
 {
@@ -11,7 +14,9 @@ class CountryController extends Controller
     // main page
     public function index(){
         
-        $countryInfo = Country::all();
+        // order according to states
+        $countryInfo = Country::orderBy('name', 'desc')->get();
+        
         return view('country.show', 
         [
             'countryInfo' => $countryInfo
@@ -52,9 +57,21 @@ class CountryController extends Controller
     }
 
     // data deletion
-    public function del(Country $country){
+    public function del(Country $country, State $state, City $city){
         // we have to get states and delete them too, 
-        //and in the states controller we would delete cities as well
+        // and in the states controller we would delete cities as well
+
+        // Get states of the country
+        
+        $stateInfo = State::where('country_id','=',$country->id)->get();
+        
+        // Extract state IDs into an array
+        $stateIds = $stateInfo->pluck('id')->toArray();
+
+        // get Cities of the states and delete
+        City::whereIn('state_id', $stateIds)->delete();
+
+        $stateInfo->each->delete();
 
         $country->delete();
 
