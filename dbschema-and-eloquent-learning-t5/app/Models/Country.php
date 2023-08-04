@@ -15,7 +15,13 @@ class Country extends Model
     ];
 
     // defining relationships
-    public function states() : HasMany{
+    public function states()
+    {
         return $this->hasMany(State::class);
+    }
+
+    public function cities()
+    {
+        return $this->hasManyThrough(City::class, State::class);
     }
 }

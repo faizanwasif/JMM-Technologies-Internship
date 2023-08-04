@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\State;
 use App\Models\Country;
+use App\Models\City;
 
 class StateController extends Controller
 {
@@ -57,8 +58,9 @@ class StateController extends Controller
 
     // data deletion
     public function del(State $state){
-        // we have to get states and delete them too, 
-        //and in the states controller we would delete cities as well
+
+        // get Cities of the states and delete
+        City::where('state_id','=', $state->id)->delete();
 
         $state->delete();
 

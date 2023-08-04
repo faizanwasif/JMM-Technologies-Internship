@@ -21,6 +21,6 @@
         <input type="text" name="name" id="city-name" value="{{ $city->name }}">
 
         {{-- button --}}
-        <input type="submit" value="Add">
+        <input type="submit" value="Update">
     </form>
 @endsection

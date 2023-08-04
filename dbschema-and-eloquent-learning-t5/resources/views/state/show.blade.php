@@ -6,8 +6,9 @@
         <tr>
             <th>state</th>
         </tr>
-        <tr>
+        
             @foreach ($stateInfo as $info)
+            <tr>
                 <td>
                     {{ $info['name'] }}
                 </td>
@@ -25,13 +26,14 @@
                         <input type='submit' value='Delete' style='width: 100%; height: 100%; background-color: #FF6347; color: white; border: none; padding: 5px; cursor: pointer;'>
                     </form>
                 </td>
+            </tr>
             @endforeach
-        </tr>
+        
     </table>
 
 
     {{--  Add button --}}
     <form action="{{ route('state.create') }}" style='text-align: center; margin-top: 20px;'>
-        <button type='submit' >Add Countries</button>
+        <button type='submit' >Add States</button>
     </form>
 @endsection

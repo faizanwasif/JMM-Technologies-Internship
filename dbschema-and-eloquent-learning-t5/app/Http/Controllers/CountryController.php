@@ -13,13 +13,30 @@ class CountryController extends Controller
 
     // main page
     public function index(){
-        
-        // order according to states
-        $countryInfo = Country::orderBy('name', 'desc')->get();
-        
+
+        $countryInfo =  Country::all();
+
+        $mappedCollection = $countryInfo->map(function ($country) {
+            $stateInfo = State::where('country_id', '=', $country->id)->get();
+
+            $stateIds = $stateInfo->pluck('id')->toArray();
+
+            $cityInfo = City::whereIn('state_id',  $stateIds)->get();
+          
+
+            return [
+                'id' => $country->id,
+                'country_name' => $country->name,
+                'states_count' => count($stateInfo),
+                'cities_count' => count($cityInfo),
+            ];
+        });
+
+        $mappedCollection = $mappedCollection->sortByDesc('states_count');
+
         return view('country.show', 
         [
-            'countryInfo' => $countryInfo
+            'countryInfo' => $mappedCollection
         ]);
     }
 
