@@ -5,6 +5,8 @@
     <table>
         <tr>
             <th>City</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         
             @foreach ($cityInfo as $info)
@@ -14,18 +16,19 @@
                 </td>
                 
                 {{-- Edit Button --}}
-                <td style='background-color: rgb(0, 174, 255); padding: 5px;'>
+                <td>
                     <a href="{{ route('city.edit', ['city' => $info] ) }}">Edit</a>
                 </td>
         
                 {{-- Deal with deletion later --}}
-                <td style='padding: 5px;'>
+                <td >
                     <form method='post' action="{{ route('city.delete', ['city' => $info] ) }}" style='margin: 0;'>
                         @csrf
                         @method('delete')
-                        <input type='submit' value='Delete' style='width: 100%; height: 100%; background-color: #FF6347; color: white; border: none; padding: 5px; cursor: pointer;'>
+                        <input type='submit' value='Delete' class="delete-button">
                     </form>
-                </td></tr>
+                </td>
+            </tr>
             @endforeach
         
     </table>
