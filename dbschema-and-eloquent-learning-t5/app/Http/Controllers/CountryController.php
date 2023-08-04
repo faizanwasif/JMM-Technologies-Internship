@@ -22,7 +22,6 @@ class CountryController extends Controller
             $stateIds = $stateInfo->pluck('id')->toArray();
 
             $cityInfo = City::whereIn('state_id',  $stateIds)->get();
-          
 
             return [
                 'id' => $country->id,

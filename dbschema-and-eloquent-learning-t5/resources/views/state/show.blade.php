@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 
 @section('content')
-    <h1>state List</h1>
+    <h1>State List</h1>
     <table>
         <tr>
-            <th>state</th>
+            <th>State</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
