@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+$route = 'App\Http\Controllers';
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,3 +21,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//------------------------------------------PRODUCTS-----------------------------------------------
+Route::get('/products', $route.'\ProductController@index')->name('products');
+
+
+// if user login then go to order page else can't place order
+// use ->middleware('auth')
