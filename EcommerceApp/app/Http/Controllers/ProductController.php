@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Product;
 
 class ProductController extends Controller
@@ -11,9 +13,13 @@ class ProductController extends Controller
 
         $product = Product::all();
 
+        $userId = Auth::id();
+
+
         return view('products.catalogue',
         [
-            'product' => $product
+            'product' => $product,
+            'user_id' => $userId
         ]);
     }
 

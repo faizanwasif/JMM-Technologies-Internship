@@ -3,7 +3,11 @@
 @section('content')
     <h1>Place Order</h1>
 
-    <form action="" method="post">
+    <form action="{{ route('user') }}" method="post">
+
+        @csrf
+        @method('post')
+
         <label for="email">Email</label>
             <input type="email" value="{{ $user->email }}">
         
@@ -16,7 +20,7 @@
         <label for="phone">Phone</label>
             <input type="tel" value="">
 
-        <input type="submit" value="Place Order">
+        <input type="submit" value="Confirm">
     </form>
     
 @endsection

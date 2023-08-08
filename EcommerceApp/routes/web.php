@@ -30,6 +30,13 @@ Route::get('/view/{product}', $route.'\ProductController@show')->name('product.s
 //------------------------------------------ORDERS-------------------------------------------------
 Route::get('/order', $route.'\OrderController@index')->name('order.placement')->middleware('auth');
 
+Route::post('/order', $route.'\UserController@store')->name('user');
+
+//------------------------------------------CART--------------------------------------------------
+Route::get('/cart', $route.'\CartController@showCart')->name('cart.show')->middleware('auth');
+// insert data
+Route::post('/cart/insert', $route.'\CartController@add')->name('cart.add');
+
 
 // if user login then go to order page else can't place order
 // use ->middleware('auth')
