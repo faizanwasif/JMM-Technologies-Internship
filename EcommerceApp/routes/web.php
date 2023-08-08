@@ -28,7 +28,7 @@ Route::get('/view/{product}', $route.'\ProductController@show')->name('product.s
 
 
 //------------------------------------------ORDERS-------------------------------------------------
-// Route::get('/order', $route.'\OrderController@show')->name('order.show');
+Route::get('/order', $route.'\OrderController@index')->name('order.placement')->middleware('auth');
 
 
 // if user login then go to order page else can't place order

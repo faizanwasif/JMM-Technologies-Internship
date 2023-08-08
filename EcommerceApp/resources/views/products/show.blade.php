@@ -8,7 +8,7 @@
         <p>{{ $product->price }}</p>
         <div class="buttons">
             <button class="add-to-cart-btn">Add to Cart</button>
-            <button class="buy-now-btn">Buy Now</button>
+            <a href="{{ route('order.placement') }}">Buy Now</a>
         </div>
     </div>
     
