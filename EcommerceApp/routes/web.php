@@ -24,6 +24,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //------------------------------------------PRODUCTS-----------------------------------------------
 Route::get('/products', $route.'\ProductController@index')->name('products');
+Route::get('/view/{product}', $route.'\ProductController@show')->name('product.show');
+
+
+//------------------------------------------ORDERS-------------------------------------------------
+// Route::get('/order', $route.'\OrderController@show')->name('order.show');
 
 
 // if user login then go to order page else can't place order
