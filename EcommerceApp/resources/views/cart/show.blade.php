@@ -7,6 +7,7 @@
         <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('empty-cart') }}</p>
     @endif
 
+   
 
     <div class="cart-container">
         <table>
@@ -52,7 +53,9 @@
             </tfoot>
         </table>
         <div class="checkout-container">
-            <form action="" method="get">
+            <form action="{{ route('order.insert', ['totalAmount'=>$totalAmount]) }}" method="post">
+                @csrf
+                @method('post')
                 <input type="submit" value="Checkout">
             </form>
             {{-- <a href="{{ route('order.placement') }}" class="checkout-btn">Checkout</a> --}}

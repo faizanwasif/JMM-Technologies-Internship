@@ -15,25 +15,29 @@ class CartController extends Controller
 {
     public function showCart(){
 
-        // Get all cart product IDs
-        $cartProductIds = Cart::pluck('product_id')->toArray();
+        // Get the currently authenticated user's ID
+        $user = Auth::id();
 
-        // Get the products associated with the cart based on the join
+        // Get all cart product IDs for the user
+        $cartProductIds = Cart::where('user_id', $user)->pluck('product_id')->toArray();
+
+        // Get the products associated with the user's cart based on the join
         $items = Product::join('carts', 'products.id', '=', 'carts.product_id')
+                        ->where('carts.user_id', $user)
                         ->whereIn('products.id', $cartProductIds)
                         ->get();
 
-        //Get Total amount
-        //Get Units and Price for each individual product
-        //Then add all the prices calculated
+        // Calculate the sum of units and prices for each individual product
         $cal = Cart::select('carts.units', 'products.price')
-        ->join('products', 'carts.product_id', '=', 'products.id')
-        ->get();
+            ->join('products', 'carts.product_id', '=', 'products.id')
+            ->where('carts.user_id', $user)
+            ->get();
 
+        // Calculate the total price and total units
         $totalPrice = $cal->sum('price');
         $totalUnits = $cal->sum('units');
 
-        // Calculate the sum of the product of units and prices
+        // Calculate the total amount
         $totalAmount = $cal->sum(function ($item) {
             return $item->units * $item->price;
         });
@@ -45,14 +49,9 @@ class CartController extends Controller
             Session::flash('alert-class', 'alert-danger'); 
         }
 
-        // Pass the products to the view
-        return view('cart.show', ['items' => $items, 'totalAmount'=>$totalAmount]);
+        // Pass the products and total amount to the view
+        return view('cart.show', ['items' => $items, 'totalAmount' => $totalAmount]);
     }
-
-
-
-
-
 
 
     public function add(Request $request){

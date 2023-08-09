@@ -6,7 +6,7 @@ body {
 }
 
 .product-container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     background-color: #ffffff;
@@ -14,8 +14,10 @@ body {
 }
 
 .product-container img {
-    max-width: 100%;
-    height: auto;
+    width: 200px;
+    height: 200px;
+    /* max-width: 100%;
+    height: auto; */
     margin-bottom: 10px;
 }
 
@@ -47,7 +49,7 @@ body {
 }
 
 .add-to-cart-btn {
-    background-color: #3498db;
+    background-color: #24292c;
     color: #ffffff;
 }
 
@@ -58,7 +60,7 @@ body {
 
 .add-to-cart-btn:hover,
 .buy-now-btn:hover {
-    background-color: #2980b9;
+    background-color: #3f4345;
 }
 
 /* CATALOGUE STYLING */
@@ -101,7 +103,7 @@ body {
 .product-display a {
     display: inline-block;
     padding: 5px 10px;
-    background-color: #3498db;
+    background-color: #24292c;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -109,7 +111,7 @@ body {
 
 /* Hover effect for the "Buy Now" link */
 .product-display a:hover {
-    background-color: #2980b9;
+    background-color: #3f4345;
 }
 
 
@@ -179,4 +181,36 @@ img {
 
 .checkout-btn:hover {
     background-color: #2980b9;
+}
+
+.cart-logo {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+/* Category List */
+
+/* Apply styles to the category list */
+.category-list {
+    list-style-type: none; /* Remove default list bullets */
+    padding: 0; /* Remove default padding */
+}
+
+/* Apply styles to each category list item */
+.category-item {
+    margin-bottom: 10px; /* Add spacing between items */
+    background-color: #f7f7f7; /* Add background color */
+    padding: 8px 12px; /* Add padding to the item */
+    border-radius: 4px; /* Round corners */
+    border: 1px solid #ddd; /* Add a border */
+    transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+/* Change background color on hover */
+.category-item:hover {
+    background-color: #e0e0e0;
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 //Models
 use App\Models\Order;
@@ -15,19 +16,18 @@ use App\Models\Cart;
 class OrderController extends Controller
 {
 
-    public function calAmount(){
+   public function insert(Request $request, Order $order, Cart $cart){
+      $totalAmount = request('totalAmount');
+      $userId = Auth::id();
+      $data = Order::create(array('user_id'=>$userId, 'total_amount'=>$totalAmount, 'order_date' => now()));
 
-        $items = Cart::select('carts.units', 'products.price')
-        ->join('products', 'carts.product_id', '=', 'products.id')
-        ->get();
+      $user = Auth::id();
+      $products = Cart::where('user_id', $user)->delete();
 
-        $totalPrice = $items->sum('price');
-        $totalUnits = $items->sum('units');
+      Session::flash('success', 'Order palced successfully!');
 
-        $totalAmount = $totalAmount * $totalPrice;
+      return redirect()->route('products');
 
-        return view('cart.show');
-
-    }
+   }
 
 }

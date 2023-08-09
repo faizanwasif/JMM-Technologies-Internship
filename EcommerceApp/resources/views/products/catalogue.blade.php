@@ -2,9 +2,6 @@
 
 @section('content')
 
-    <nav>
-        <a href="{{ route('cart.show') }}">Cart</a>
-    </nav>
 
     @if ($errors->any())
         <div  style="color: red;">
@@ -16,6 +13,21 @@
         </div>
     @endif
 
+    <h3>
+        <a href="{{ route('category.view') }}">Categories</a>
+    </h3>
+
+    @if(Session::has('success'))
+        <p class="alert {{ Session::get('alert', 'alert-success') }}">
+            {{ Session::get('success') }}
+        </p>
+        <script>
+            setTimeout(function() {
+                document.querySelector('.alert').style.display = 'none';
+            }, 2000); // Adjust the delay time (in milliseconds) as needed
+        </script>
+    @endif
+    
     @if(Session::has('add-success'))
         <div class="alert alert-success">
             {{ Session::get('add-success') }}
@@ -26,6 +38,8 @@
             }, 2000); // Adjust the delay time (in milliseconds) as needed
         </script>
     @endif
+
+
     <div class='catalogue'>
         @foreach ($product as $item)
             <div class='product-display'>
@@ -37,8 +51,10 @@
                     <form action="{{ route('cart.add', ['user_id'=>$user_id, 'product_id' => $item->id]) }}" method="post">
                         @csrf
                         @method('post')
-                        <input type="submit" value="Add to Cart">
+                        <input type="submit" value="Add to Cart" class="add-to-cart-btn">
                     </form>
+                    <br>
+                    <a href="{{ route('product.show', ['product'=>$item]) }}">View Product</a>
                 </figure>
             </div>
         @endforeach
