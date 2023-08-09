@@ -13,8 +13,8 @@
         </div>
     @endif
 
-    <h3>
-        <a href="{{ route('category.view') }}">Categories</a>
+    <h3 class="category-heading">
+        <a class="category-link" href="{{ route('category.view') }}">Categories</a>
     </h3>
 
     @if(Session::has('success'))

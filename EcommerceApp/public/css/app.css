@@ -214,3 +214,22 @@ img {
 .category-item:hover {
     background-color: #e0e0e0;
 }
+
+/* CATEGORIES */
+/* Apply styles to the category heading */
+.category-heading {
+    font-size: 24px; /* Adjust the font size */
+    margin-bottom: 20px; /* Add spacing below the heading */
+}
+
+/* Apply styles to the category link */
+.category-link {
+    text-decoration: none; /* Remove underline */
+    color: #353232; /* Change link color */
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Change link color on hover */
+.category-link:hover {
+    color: #000000;
+}
