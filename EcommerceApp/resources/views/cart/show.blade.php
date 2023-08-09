@@ -2,6 +2,12 @@
 
 @section('content')
 
+{{-- Flash Messages --}}
+    @if(Session::has('empty-cart'))
+        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('empty-cart') }}</p>
+    @endif
+
+
     <div class="cart-container">
         <table>
             <thead>
@@ -25,10 +31,10 @@
                         <td>${{ $item->price }}</td>
                         <td>{{ $item->units }}</td>
                         <td>
-                            <form action="{{ route('cart.remove', ['product' => $item->id]) }}" method="post">
+                            <form action="{{ route('cart.remove', ['product' => $item]) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="remove-btn">Remove</button>
+                                <button type="submit" class="remove-btn">Delete</button>
                             </form>
                         </td>
                     </tr>

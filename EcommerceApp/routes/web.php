@@ -39,10 +39,8 @@ Route::get('/cart', $route.'\CartController@showCart')->name('cart.show')->middl
 Route::post('/cart/insert', $route.'\CartController@add')->name('cart.add');
 
 // delete data
-Route::delete('/cart', $route.'\CartController@del')->name('cart.remove');
+Route::delete('/cart/{product}', $route.'\CartController@del')->name('cart.remove');
 
-// update data
-Route::put('/cart/update', $route.'\CityController@update')->name('cart.update');
 
 
 // if user login then go to order page else can't place order

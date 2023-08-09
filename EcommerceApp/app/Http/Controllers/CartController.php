@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\Cart;
 use App\Models\Product;
@@ -25,7 +26,8 @@ class CartController extends Controller
         // Check if any products were found
         if ($items->isEmpty()) {
             // Handle the case when no products are associated with the cart
-            return redirect()->route('home')->with('error', 'No items in cart.');
+            Session::flash('empty-cart', 'The Cart is empty!'); 
+            Session::flash('alert-class', 'alert-danger'); 
         }
 
         // Pass the products to the view
@@ -51,28 +53,30 @@ class CartController extends Controller
             $increment = Cart::find($existingCart->id);
             $increment->units ++;
             $increment->save();
-            return redirect()->route('cart.show');
+
+            //Add flash message to tell the item has been added successfully
+            Session::flash('add-success', 'Item added successfully!'); 
+            Session::flash('success-class', 'successfull'); 
+
+            return redirect()->route('products');
         }
         
         // Cart does not exist, create a new entry in the carts table
         $addData = Cart::create($data);
         
-        return redirect()->route('cart.show');
+        //Add flash message to tell the item has been added successfully
+        Session::flash('add-success', 'Item added successfully!'); 
+        Session::flash('success-class', 'successfull'); 
+
+        return redirect()->route('products');
         
     }
 
-    public function update(Request $request){
-        dd("EXITSSSS");
-        $item = Cart::find('id');
-        dd($item);
-    }
 
     // data deletion
-    public function del(Cart $cart){
-        // we have to get citys and delete them too, 
-        //and in the citys controller we would delete cities as well
+    public function del(Cart $product){
 
-        $cart->delete();
+        $product->delete();
 
         return redirect()->route('cart.show');
     }

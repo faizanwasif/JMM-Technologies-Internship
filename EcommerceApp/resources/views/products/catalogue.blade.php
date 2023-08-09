@@ -5,6 +5,7 @@
     <nav>
         <a href="{{ route('cart.show') }}">Cart</a>
     </nav>
+
     @if ($errors->any())
         <div  style="color: red;">
             <ul>
@@ -13,6 +14,17 @@
                 @endforeach
             </ul>
         </div>
+    @endif
+
+    @if(Session::has('add-success'))
+        <div class="alert alert-success">
+            {{ Session::get('add-success') }}
+        </div>
+        <script>
+            setTimeout(function() {
+                document.querySelector('.alert-success').style.display = 'none';
+            }, 2000); // Adjust the delay time (in milliseconds) as needed
+        </script>
     @endif
     <div class='catalogue'>
         @foreach ($product as $item)
