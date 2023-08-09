@@ -39,10 +39,23 @@
                         </td>
                     </tr>
                 @endforeach
+               
             </tbody>
+            <tfoot>
+                <tr>
+                    <th>
+                        Total Amount
+                    </th>
+                    {{-- // summation units*price --}}
+                    <td>{{ $totalAmount }}</td>
+                </tr>
+            </tfoot>
         </table>
         <div class="checkout-container">
-            <a href="" class="checkout-btn">Checkout</a>
+            <form action="" method="get">
+                <input type="submit" value="Checkout">
+            </form>
+            {{-- <a href="{{ route('order.placement') }}" class="checkout-btn">Checkout</a> --}}
         </div>
     </div>
 

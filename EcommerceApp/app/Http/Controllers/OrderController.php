@@ -9,28 +9,25 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\Product;
+use App\Models\Cart;
 
 
 class OrderController extends Controller
 {
-    public function index(){
-
-        // get user
-        // send user to placement
-        $userInfo = Auth::user();
-        
-        return view('orders.placement', ['user' => $userInfo]);
-    }
-
-    public function add(Product $product){
-
-        dd($product->id);
-
-        // return "THANK YOU!!";
-    }
 
     public function calAmount(){
-        
+
+        $items = Cart::select('carts.units', 'products.price')
+        ->join('products', 'carts.product_id', '=', 'products.id')
+        ->get();
+
+        $totalPrice = $items->sum('price');
+        $totalUnits = $items->sum('units');
+
+        $totalAmount = $totalAmount * $totalPrice;
+
+        return view('cart.show');
+
     }
 
 }

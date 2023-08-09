@@ -29,6 +29,7 @@ Route::get('/view/{product}', $route.'\ProductController@show')->name('product.s
 
 //------------------------------------------ORDERS-------------------------------------------------
 Route::get('/order', $route.'\OrderController@index')->name('order.placement')->middleware('auth');
+// Route::get('/order', $route.'\OrderController@calAmount')->name('order.cal')->middleware('auth');
 
 Route::post('/order', $route.'\UserController@store')->name('user');
 

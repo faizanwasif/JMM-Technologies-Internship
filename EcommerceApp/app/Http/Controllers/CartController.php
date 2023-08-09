@@ -23,6 +23,21 @@ class CartController extends Controller
                         ->whereIn('products.id', $cartProductIds)
                         ->get();
 
+        //Get Total amount
+        //Get Units and Price for each individual product
+        //Then add all the prices calculated
+        $cal = Cart::select('carts.units', 'products.price')
+        ->join('products', 'carts.product_id', '=', 'products.id')
+        ->get();
+
+        $totalPrice = $cal->sum('price');
+        $totalUnits = $cal->sum('units');
+
+        // Calculate the sum of the product of units and prices
+        $totalAmount = $cal->sum(function ($item) {
+            return $item->units * $item->price;
+        });
+
         // Check if any products were found
         if ($items->isEmpty()) {
             // Handle the case when no products are associated with the cart
@@ -31,8 +46,14 @@ class CartController extends Controller
         }
 
         // Pass the products to the view
-        return view('cart.show', ['items' => $items]);
+        return view('cart.show', ['items' => $items, 'totalAmount'=>$totalAmount]);
     }
+
+
+
+
+
+
 
     public function add(Request $request){
 
@@ -71,6 +92,7 @@ class CartController extends Controller
         return redirect()->route('products');
         
     }
+
 
 
     // data deletion
