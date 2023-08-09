@@ -1,24 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
-@if ($errors->any())
-        <div  style="color: red;">
-            <ul>
-                @foreach ($errors->all() as  $error)
-                    <li>{{  $error  }}</li>
+
+    <div class="cart-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Units</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($items as $item)
+                    <tr>
+                        <td>
+                            <img src="{{ $item->image }}" alt="{{ $item->name }}" width="100" height="100">
+                        </td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->description }}</td>
+                        <td>${{ $item->price }}</td>
+                        <td>{{ $item->units }}</td>
+                        <td>
+                            <form action="{{ route('cart.remove', ['product' => $item->id]) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="remove-btn">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
                 @endforeach
-            </ul>
+            </tbody>
+        </table>
+        <div class="checkout-container">
+            <a href="" class="checkout-btn">Checkout</a>
         </div>
-    @endif
-    @foreach ($items as $item)
-    <div class='product-display'>
-        <figure>
-            <img src="{{ $item->image }}" alt="{{ $item->name }}" width="200" height="200">
-            <figcaption>{{ $item->name }}</figcaption>
-            <p>{{ $item->description }}</p>
-            <a href="{{ route('product.show', ['product' => $item]) }}">Buy Now</a>
-        </figure>
     </div>
-@endforeach>
-    
+
 @endsection

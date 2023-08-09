@@ -34,8 +34,15 @@ Route::post('/order', $route.'\UserController@store')->name('user');
 
 //------------------------------------------CART--------------------------------------------------
 Route::get('/cart', $route.'\CartController@showCart')->name('cart.show')->middleware('auth');
+
 // insert data
 Route::post('/cart/insert', $route.'\CartController@add')->name('cart.add');
+
+// delete data
+Route::delete('/cart', $route.'\CartController@del')->name('cart.remove');
+
+// update data
+Route::put('/cart/update', $route.'\CityController@update')->name('cart.update');
 
 
 // if user login then go to order page else can't place order

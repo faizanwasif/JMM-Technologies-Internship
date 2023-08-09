@@ -60,3 +60,123 @@ body {
 .buy-now-btn:hover {
     background-color: #2980b9;
 }
+
+/* CATALOGUE STYLING */
+
+/* Styling for the product display container */
+.product-display {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 220px; /* Set your desired width */
+    text-align: center;
+}
+
+/* Styling for the product image */
+.product-display img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styling for the product name */
+.product-display figcaption {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Styling for the product description */
+.product-display p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 15px;
+}
+
+/* Styling for the "Buy Now" link */
+.product-display a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Hover effect for the "Buy Now" link */
+.product-display a:hover {
+    background-color: #2980b9;
+}
+
+
+/* CART STYLING */
+
+/* Styling for the cart container */
+.cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styling for the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    font-weight: bold;
+}
+
+/* Styling for the product image in the table */
+img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Styling for the "Remove" button */
+.remove-btn {
+    padding: 5px 10px;
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.remove-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Styling for the "Checkout" button */
+.checkout-container {
+    text-align: center;
+}
+
+.checkout-btn {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.checkout-btn:hover {
+    background-color: #2980b9;
+}

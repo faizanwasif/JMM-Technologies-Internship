@@ -16,7 +16,7 @@ class Product extends Model
         'category_id'
     ];
 
-    protected $touches = ['country'];
+    // protected $touches = ['product'];
 
     public function category(): BelongsTo{
         return $this->belongsTo(Category::class);

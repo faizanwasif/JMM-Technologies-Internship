@@ -36,12 +36,43 @@ class CartController extends Controller
 
         // dd("hello");
         $data = $request->validate([
-            'user_id' =>'required',
-            'product_id'=>'required',
+            'user_id' => 'required',
+            'product_id' => 'required',
         ]);
+        
+        // Check if the product already exists with the same user_id and product_id
+        $existingCart = Cart::where('user_id', $data['user_id'])
+                            ->where('product_id', $data['product_id'])
+                            ->first();
 
-
+        
+        if ($existingCart) {
+            // product already exists, handle the scenario (e.g., show an error message or redirect)
+            $increment = Cart::find($existingCart->id);
+            $increment->units ++;
+            $increment->save();
+            return redirect()->route('cart.show');
+        }
+        
+        // Cart does not exist, create a new entry in the carts table
         $addData = Cart::create($data);
+        
+        return redirect()->route('cart.show');
+        
+    }
+
+    public function update(Request $request){
+        dd("EXITSSSS");
+        $item = Cart::find('id');
+        dd($item);
+    }
+
+    // data deletion
+    public function del(Cart $cart){
+        // we have to get citys and delete them too, 
+        //and in the citys controller we would delete cities as well
+
+        $cart->delete();
 
         return redirect()->route('cart.show');
     }
