@@ -26,5 +26,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // -------------------------------User----------------------------------------------------------
 
 // -------------------------------Tag------------------------------------------------------
+//View List Page
+Route::get('/tags', $route.'\TagController@index')->name('view-tags')->middleware('auth');
 
 // -------------------------------Note----------------------------------------------------------
+// View Edit Page
+Route::get('/notes/edit', $route.'\NoteController@add')->name('add-notes')->middleware('auth');
