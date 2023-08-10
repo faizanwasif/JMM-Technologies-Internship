@@ -42,4 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // has many notes and categories
+
+    public function tags() : HasMany{
+        return $this->hasMany(Tag::class);
+    }
+
+    public function notes() : HasMany{
+        return $this->hasMany(Note::class);
+    }
 }
