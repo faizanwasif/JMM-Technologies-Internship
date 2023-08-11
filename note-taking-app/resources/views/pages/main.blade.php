@@ -1,40 +1,28 @@
 @extends('layouts.app')
 @section('content')
 
-    
-    {{-- // new note and category buttons div --}}
+<div class="main-container">
     <div class="add-notes-and-view-tags-container">
         <div class="search-bar">
             <input type="search" name="search-notes" id="search-notes" placeholder="Search...">
         </div>
-        <a href="{{ route('create-notes') }}">Note +</a>
-        <a href="{{ route('view-tags') }}">Tag +</a>
+        <a href="{{ route('create-notes') }}" class="action-button">Create Note</a>
+        <a href="{{ route('view-tags') }}" class="action-button">View Tags</a>
     </div>
 
-    {{-- // notes displaying div --}}
-        
+    <div class="notes-list-container">
         @foreach ($notes as $note)
-
-            <div class="notes-displaying-container">
-                <div class="note-container">
-                    {{-- <figure>
-                        <img src="/assets/edit.png" alt="edit">
-                    </figure> --}}
-                    <p>{{ $note->title }}</p>
+            <div class="note-container">
+                <div class="note-preview">
+                    <p class="note-title">{{ $note->title }}</p>
+                    <p class="note-content">{{ substr($note->content, 0, 100) }}...</p>
                 </div>
-                <div >
-                    <form action="" method="post">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" value="Delete">
-                    </form>
-                    
-                    <a href="" class="note-delete-btn">Edit</a>
+                <div class="note-actions">
+                    <a href="{{ route('note.view', ['note'=>$note]) }}" class="action-button view-button">View Note</a>
                 </div>
-
             </div>
-            
         @endforeach
-
+    </div>
+</div>
 
 @endsection

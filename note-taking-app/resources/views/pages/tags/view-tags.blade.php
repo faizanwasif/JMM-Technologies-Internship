@@ -17,19 +17,16 @@
 
             <div class="notes-displaying-container">
                 <div class="note-container">
-                    {{-- <figure>
-                        <img src="/assets/edit.png" alt="edit">
-                    </figure> --}}
                     <p>{{ $tag->name }}</p>
                 </div>
                 <div >
-                    <form action="" method="post">
+                    <form action="{{ route('tag.remove', ['tag' => $tag] )}}" method="post">
                         @csrf
                         @method('delete')
                         <input type="submit" value="Delete">
                     </form>
                     
-                    <a href="" class="note-delete-btn">Edit</a>
+                    <a href="{{ route('tag.edit', ['tag' => $tag] ) }}" class="note-delete-btn">Edit</a>
                 </div>
 
             </div>

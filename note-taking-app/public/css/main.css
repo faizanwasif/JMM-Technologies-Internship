@@ -1,119 +1,312 @@
-body{
+/* Add this CSS in your style file */
+
+.main-container {
     background-color: aliceblue;
+    padding: 20px;
     font-size: large;
 }
 
-a{
-    text-decoration: none;
-}
-/* ----------------------------------------- */
-.notes-displaying-container{
-    padding: 10px;
+.add-notes-and-view-tags-container {
     display: flex;
-    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-/* ----------------------------------------- */
-.note-container{
-    border: 3px solid rgb(1, 63, 118);
-    margin: 20px;
-    padding-top: 15px;
-    padding-left: 5px;
-    cursor: pointer;    
-    display: flex; /* Use flexbox */
-    /* align-items: center; Center vertically */
-    /* gap: 10px; Gap between image and paragraph */
-    color: rgb(3, 61, 111);
-    width: 100%;
-}
-
-.note-container img {
-    width: 15px;
-    height: 15px;
-}
-
-
-.note-container :hover{
-    background-color: rgb(192, 223, 251);
-}
-
-
-
-/* -------------------------------------------- */
-.add-notes-and-view-tags-container{
-    display: flex;
-    justify-content: right;
-    margin: 15px;
-}
-
-.add-notes-and-view-tags-container a{
-    color: rgb(255, 255, 255);
-    background-color: rgb(0, 63, 118);
-    padding: 10px;
-    border: 1px solid white;
-    width: 100px;
-    text-align: center;
-    font-size: small;
-}
-
-.add-notes-and-view-tags-container .search-bar{
-    margin-right: auto; 
-}
-
-.search-bar input{
+.search-bar input {
     height: 42px;
-    padding: 10px 30px 10px 10px; /* Add some padding for the icon */
+    padding: 10px;
     background-repeat: no-repeat;
 }
 
-/* ---------------------------------------------- */
-header {
+.action-button {
+    padding: 10px 20px;
     background-color: rgb(0, 63, 118);
     color: white;
-    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: small;
+    margin-left: 10px;
+}
+
+.notes-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.note-container {
+    background-color: rgb(192, 223, 251);
     padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-title {
+    font-size: 18px;
+    margin: 0;
+}
+
+.note-actions {
+    display: flex;
+    gap: 10px;
+}
+
+
+.note-preview {
+    flex: 1;
+}
+
+.note-content {
+    font-size: 14px;
+    margin: 5px 0;
+    color: #333;
+}
+
+.view-button {
+    padding: 6px 12px;
+    background-color: rgb(1, 63, 118);
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: small;
+}
+
+
+/* Add this CSS in your style file */
+
+.view-note-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid rgb(1, 63, 118);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.view-note-container h1 {
+    font-size: 24px;
+    color: rgb(1, 63, 118);
+    margin-bottom: 10px;
+}
+
+.note-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.note-actions {
+    margin-top: 20px;
+}
+
+.action-button {
+    padding: 8px 16px;
+    background-color: rgb(1, 63, 118);
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: small;
+}
+
+.action-button:hover {
+    background-color: rgb(0, 43, 86);
+}
+
+
+.view-note-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid rgb(1, 63, 118);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.note-header h1 {
+    font-size: 24px;
+    color: rgb(1, 63, 118);
+    margin: 0;
+}
+
+.edit-button img {
+    cursor: pointer;
+}
+
+.note-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.note-actions {
+    margin-top: 20px;
+}
+
+.action-button {
+    padding: 8px 16px;
+    background-color: rgb(1, 63, 118);
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: small;
+}
+
+.action-button:hover {
+    background-color: rgb(0, 43, 86);
+}
+
+
+
+
+.edit-note-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid rgb(1, 63, 118);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.edit-note-container header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.edit-note-container h1 {
+    font-size: 24px;
+    color: rgb(1, 63, 118);
+    margin: 0;
+}
+
+.edit-note-container a {
+    color: rgb(1, 63, 118);
+    text-decoration: none;
+}
+
+.create-note-form label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.create-note-form select,
+.create-note-form textarea,
+.create-note-form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.create-note-form button[type="submit"] {
+    padding: 10px 20px;
+    background-color: rgb(1, 63, 118);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-note-form button[type="submit"]:hover {
+    background-color: rgb(0, 43, 86);
+}
+
+.edit-note-container footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #888;
+}
+
+
+
+
+.add-note-page {
+    background-color: aliceblue;
+    padding: 20px;
+}
+
+.add-note-page header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-note-page h1 {
+    font-size: 24px;
+    color: rgb(1, 63, 118);
+    margin: 0;
+}
+
+.add-note-page a {
+    color: rgb(1, 63, 118);
+    text-decoration: none;
 }
 
 .create-note-container {
-    margin: 20px;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    border: 3px solid rgb(1, 63, 118);
     background-color: white;
+    border: 1px solid rgb(1, 63, 118);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-label {
-    color: rgb(3, 61, 111);
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
     display: block;
     margin-bottom: 5px;
 }
 
-input[type="text"],select,
-textarea {
+.form-group select,
+.form-group textarea,
+.form-group input[type="text"] {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid rgb(1, 63, 118);
+    border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-button {
-    background-color: rgb(0, 63, 118);
+.create-note-btn {
+    padding: 10px 20px;
+    background-color: rgb(1, 63, 118);
     color: white;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
     border-radius: 5px;
-    font-size: medium;
-    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
-button:hover {
-    background-color: rgb(3, 61, 111);
+.create-note-btn:hover {
+    background-color: rgb(0, 43, 86);
 }
 
-footer {
+.add-note-page footer {
+    margin-top: 20px;
     text-align: center;
-    padding: 10px;
-    background-color: rgb(0, 63, 118);
-    color: white;
+    color: #888;
 }

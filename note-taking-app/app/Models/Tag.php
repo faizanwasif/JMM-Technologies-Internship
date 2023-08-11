@@ -10,7 +10,8 @@ class Tag extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'description'
+        'description',
+        'user_id'
     ];
 
     // Has many notes and belongs to user

@@ -6,20 +6,20 @@
         <a href="{{ route('view-tags') }}">Back</a>
     </header>
     <div class="create-note-container">
-        <form action="{{ route('add-tags') }}" method="POST">
+        <form action="{{ route('tag.update', ['tag' => $tag]) }}" method="POST">
 
             @csrf
-            @method('post')
+            @method('put')
 
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" value="{{ $tag->name }}">
             
             <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="8"></textarea>
+            <textarea id="description" name="description"  rows="8">{{ $tag->description }}</textarea>
 
             
             
-            <button type="submit">Create Tag</button>
+            <button type="submit">Update Tag</button>
         </form>
     </div>
     <footer>

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Tag;
+use App\Models\Note;
 
 class TagController extends Controller
 {
@@ -16,14 +18,49 @@ class TagController extends Controller
     }
 
     public function add(Request $request){
+
+        $user_id = Auth::id();
+
+    
         $data = $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-            'tag_id' => 'required'
+            'name' => 'required'
+        ]);
+    
+        $tag = Tag::create([
+            'name' => $data['name'], // Access the 'name' value from the $data array
+            'user_id' => $user_id
+        ]);
+    
+        return redirect()->route('view-tags');
+    }
+
+
+    // data deletion
+    public function del(Tag $tag){
+
+        // get Cities of the states and delete
+        Note::where('tag_id','=', $tag->id)->delete();
+
+        $tag->delete();
+
+        return redirect()->route('view-tags');
+    }
+
+     //data updation
+     public function edit(Tag $tag){
+        
+        return view('pages.tags.edit', ['tag'=> $tag]);
+    }
+
+    public function update(Tag $tag, Request $request){
+        
+        $data = $request->validate([
+            'name' => 'required',
         ]);
 
-        Note::create($data);
-
-        return redirect()->route('home');
+        // update model and add the data into db
+        $tag -> update($data);
+        return redirect(route('view-tags'));
     }
+    
 }

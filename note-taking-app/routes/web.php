@@ -29,11 +29,28 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //View List Page
 Route::get('/tags', $route.'\TagController@index')->name('view-tags')->middleware('auth');
 
-// View Edit Page
-Route::get('/notes/edit', $route.'\TagController@create')->name('create-tags')->middleware('auth');
-Route::post('/notes/edit', $route.'\TagController@add')->name('add-tags')->middleware('auth');
+// View Add Page
+Route::get('/tags/add', $route.'\TagController@create')->name('create-tags')->middleware('auth');
+Route::post('/tags/add', $route.'\TagController@add')->name('add-tags')->middleware('auth');
+
+// Delete 
+Route::delete('/tag/{tag}', $route.'\TagController@del')->name('tag.remove')->middleware('auth');
+
+// update data
+Route::get('/tag/edit/{tag}', $route.'\TagController@edit')->name('tag.edit');
+Route::put('/tag/edit/{tag}', $route.'\TagController@update')->name('tag.update');
 
 // -------------------------------Note----------------------------------------------------------
-// View Edit Page
-Route::get('/notes/edit', $route.'\NoteController@create')->name('create-notes')->middleware('auth');
-Route::post('/notes/edit', $route.'\NoteController@add')->name('add-notes')->middleware('auth');
+
+Route::get('/notes', $route.'\NoteController@index')->name('note.view')->middleware('auth');
+// View Add Page
+Route::get('/notes/add', $route.'\NoteController@create')->name('create-notes')->middleware('auth');
+Route::post('/notes/add', $route.'\NoteController@add')->name('add-notes')->middleware('auth');
+
+// Delete
+Route::delete('/notes/{note}', $route.'\NoteController@del')->name('note.remove')->middleware('auth');
+
+// update data
+Route::get('/note/edit/{note}', $route.'\NoteController@edit')->name('note.edit');
+Route::put('/note/edit/{note}', $route.'\NoteController@update')->name('note.update');
+
