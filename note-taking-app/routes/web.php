@@ -29,8 +29,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //View List Page
 Route::get('/tags', $route.'\TagController@index')->name('view-tags')->middleware('auth');
 
+// View Edit Page
+Route::get('/notes/edit', $route.'\TagController@create')->name('create-tags')->middleware('auth');
+Route::post('/notes/edit', $route.'\TagController@add')->name('add-tags')->middleware('auth');
+
 // -------------------------------Note----------------------------------------------------------
 // View Edit Page
 Route::get('/notes/edit', $route.'\NoteController@create')->name('create-notes')->middleware('auth');
-
 Route::post('/notes/edit', $route.'\NoteController@add')->name('add-notes')->middleware('auth');
