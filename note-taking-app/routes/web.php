@@ -31,4 +31,4 @@ Route::get('/tags', $route.'\TagController@index')->name('view-tags')->middlewar
 
 // -------------------------------Note----------------------------------------------------------
 // View Edit Page
-Route::get('/notes/edit', $route.'\NoteController@add')->name('add-notes')->middleware('auth');
+Route::get('/notes/edit', $route.'\NoteController@create')->name('add-notes')->middleware('auth');
