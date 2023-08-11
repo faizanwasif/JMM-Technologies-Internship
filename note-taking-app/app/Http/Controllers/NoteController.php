@@ -9,8 +9,13 @@ use App\Models\Tag;
 class NoteController extends Controller
 {
     
-    public function index(Note $note){
+    public function index(){
+        $info = request('note');
+
+        $note = Note::where('id', '=', $info)->first();
+    
         return view('pages.notes.view', ['note'=>$note]);
+
     }
 
 
@@ -58,5 +63,22 @@ class NoteController extends Controller
         // update model and add the data into db
         $note -> update($data);
         return redirect(route('home'));
+    }
+
+    //////
+    public function search(Request $request)
+    {
+        $searchQuery = request('search-notes');
+
+        $note = Note::where('title', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('content', 'like', '%' . $searchQuery . '%')
+                    ->get();
+        
+        if ($note->isEmpty()) {
+            return redirect()->route('home')->with('not_found', 'No matching notes found.');
+        }
+        
+        return view('pages.main', ['notes' => $note]);
+                        
     }
 }

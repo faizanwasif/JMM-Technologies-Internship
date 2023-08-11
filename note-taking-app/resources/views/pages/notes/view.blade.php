@@ -7,6 +7,11 @@
         <a href="{{ route('note.edit', ['note' => $note]) }}" class="edit-button">
             <img src="/assets/edit.png" alt="Edit" width="20" height="20">
         </a>
+        <form action="{{ route('note.remove', ['note' => $note]) }}" method="post">
+            @csrf
+            @method('delete')
+            <input type="image" src="/assets/remove.png" alt="delete" width="20" height="20">
+        </form>
     </div>
     <p class="note-content">{{ $note->content }}</p>
     <div class="note-actions">

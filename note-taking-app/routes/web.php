@@ -40,9 +40,13 @@ Route::delete('/tag/{tag}', $route.'\TagController@del')->name('tag.remove')->mi
 Route::get('/tag/edit/{tag}', $route.'\TagController@edit')->name('tag.edit');
 Route::put('/tag/edit/{tag}', $route.'\TagController@update')->name('tag.update');
 
+// filter data
+Route::get('/tag/search', $route.'\TagController@search')->name('tag.search');
+
 // -------------------------------Note----------------------------------------------------------
 
-Route::get('/notes', $route.'\NoteController@index')->name('note.view')->middleware('auth');
+Route::get('/note/view/{note}', $route.'\NoteController@index')->name('note.view')->middleware('auth');
+
 // View Add Page
 Route::get('/notes/add', $route.'\NoteController@create')->name('create-notes')->middleware('auth');
 Route::post('/notes/add', $route.'\NoteController@add')->name('add-notes')->middleware('auth');
@@ -54,3 +58,5 @@ Route::delete('/notes/{note}', $route.'\NoteController@del')->name('note.remove'
 Route::get('/note/edit/{note}', $route.'\NoteController@edit')->name('note.edit');
 Route::put('/note/edit/{note}', $route.'\NoteController@update')->name('note.update');
 
+// filter data
+Route::get('/note/search', $route.'\NoteController@search')->name('note.search');

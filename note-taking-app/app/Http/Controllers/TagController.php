@@ -62,5 +62,21 @@ class TagController extends Controller
         $tag -> update($data);
         return redirect(route('view-tags'));
     }
+
+    public function search(Request $request)
+    {
+        $searchQuery = request('search-notes');
+
+        $tag = Tag::where('name', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('description', 'like', '%' . $searchQuery . '%')
+                    ->get();
+        
+        if ($tag->isEmpty()) {
+            return redirect()->route('view-tags')->with('not_found', 'No matching notes found.');
+        }
+        
+        return view('pages.tags.view-tags', ['tags' => $tag]);
+                        
+    }
     
 }

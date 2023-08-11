@@ -1,29 +1,34 @@
 @extends('layouts.app')
 @section('content')
 
+<div class="edit-tag-container">
     <header>
-        <h1>Create a New Tag</h1>
-        <a href="{{ route('view-tags') }}">Back</a>
+        <h1>Edit Tag</h1>
+        <a href="{{ route('view-tags') }}" class="back-link">Back</a>
     </header>
-    <div class="create-note-container">
-        <form action="{{ route('tag.update', ['tag' => $tag]) }}" method="POST">
 
+    <div class="tag-form-container">
+        <form action="{{ route('tag.update', ['tag' => $tag]) }}" method="POST">
             @csrf
             @method('put')
 
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="{{ $tag->name }}">
-            
-            <label for="description">Description:</label>
-            <textarea id="description" name="description"  rows="8">{{ $tag->description }}</textarea>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="{{ $tag->name }}" class="form-control">
+            </div>
 
-            
-            
-            <button type="submit">Update Tag</button>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="6" class="form-control">{{ $tag->description }}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update Tag</button>
         </form>
     </div>
-    <footer>
-        <p>&copy; 2023 Your App Name</p>
-    </footer>
+</div>
+
+<footer>
+    <p>&copy; 2023 Your App Name</p>
+</footer>
 
 @endsection
