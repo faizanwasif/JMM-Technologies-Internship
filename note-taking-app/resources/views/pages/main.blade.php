@@ -7,7 +7,7 @@
         <div class="search-bar">
             <input type="search" name="search-notes" id="search-notes" placeholder="Search...">
         </div>
-        <a href="{{ route('add-notes') }}">Note +</a>
+        <a href="{{ route('create-notes') }}">Note +</a>
         <a href="{{ route('view-tags') }}">Tag +</a>
     </div>
 
