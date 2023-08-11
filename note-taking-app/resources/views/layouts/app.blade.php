@@ -77,7 +77,12 @@
 
         <main class="py-4">
             @yield('content')
+            @yield('script')
         </main>
     </div>
+    @stack('scripts')
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
 </body>
 </html>

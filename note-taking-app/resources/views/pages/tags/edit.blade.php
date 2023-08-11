@@ -28,7 +28,20 @@
 </div>
 
 <footer>
-    <p>&copy; 2023 Your App Name</p>
-</footer>
+    <p>&copy; 2023 Notes Buddy</p></footer>
 
 @endsection
+
+@push('scripts')
+    <script>
+        // Your additional script content here
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Hello from DOMContentLoaded");
+            ClassicEditor
+                .create( document.querySelector( '#description' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        });
+    </script>
+@endpush

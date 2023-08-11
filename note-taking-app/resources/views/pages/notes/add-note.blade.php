@@ -1,6 +1,16 @@
 @extends('layouts.app')
 @section('content')
 
+@if ($errors->any())
+<div style="color: red;">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 <div class="add-note-page">
     <header>
         <h1>Create a New Note</h1>
@@ -36,8 +46,22 @@
         </form>
     </div>
     <footer>
-        <p>&copy; 2023 Your App Name</p>
+        <p>&copy; 2023 Notes Buddy</p>
     </footer>
 </div>
 
 @endsection
+
+@push('scripts')
+    <script>
+        // Your additional script content here
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("Hello from DOMContentLoaded");
+            ClassicEditor
+                .create( document.querySelector( '#content' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        });
+    </script>
+@endpush

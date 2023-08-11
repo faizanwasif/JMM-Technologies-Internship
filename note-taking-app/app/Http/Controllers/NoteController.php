@@ -25,7 +25,7 @@ class NoteController extends Controller
     }
 
     public function add(Request $request){
-        // dd("heelo");
+        dd("heelo");
         $data = $request->validate([
             'title' => 'required',
             'content' => 'required',
