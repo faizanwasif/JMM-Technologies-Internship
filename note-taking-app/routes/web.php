@@ -43,6 +43,8 @@ Route::put('/tag/edit/{tag}', $route.'\TagController@update')->name('tag.update'
 // filter data
 Route::get('/tag/search', $route.'\TagController@search')->name('tag.search');
 
+Route::get('/tag/{tag}', $route.'\TagController@showNote')->name('tag.showNote');
+
 // -------------------------------Note----------------------------------------------------------
 
 Route::get('/note/view/{note}', $route.'\NoteController@index')->name('note.view')->middleware('auth');

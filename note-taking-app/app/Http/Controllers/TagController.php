@@ -63,7 +63,7 @@ class TagController extends Controller
         return redirect(route('view-tags'));
     }
 
-    public function search(Request $request)
+    public function search()
     {
         $searchQuery = request('search-notes');
 
@@ -78,5 +78,21 @@ class TagController extends Controller
         return view('pages.tags.view-tags', ['tags' => $tag]);
                         
     }
+
+
+    public function showNote(){
+        $tag_id = request('tag');
+    
+        $note = Note::where('id', $tag_id)->get();
+    
+        if ($note->isEmpty()) {
+            return redirect()->route('home')->with('not_found', 'No notes found.');
+        }
+        return redirect()->route('home', ['notes' => $note])->with('found', 'Match found.');
+        
+        
+    }
+    
+    
     
 }

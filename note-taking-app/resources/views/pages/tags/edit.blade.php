@@ -7,6 +7,16 @@
         <a href="{{ route('view-tags') }}" class="back-link">Back</a>
     </header>
 
+    @if ($errors->any())
+            <div style="color: red;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+    @endif
+
     <div class="tag-form-container">
         <form action="{{ route('tag.update', ['tag' => $tag]) }}" method="POST">
             @csrf

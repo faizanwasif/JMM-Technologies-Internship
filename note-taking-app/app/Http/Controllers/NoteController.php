@@ -25,18 +25,21 @@ class NoteController extends Controller
     }
 
     public function add(Request $request){
-        dd("heelo");
+     
         $data = $request->validate([
             'title' => 'required',
             'content' => 'required',
             'tag_id' => 'required'
         ]);
-
+    
+        // Remove HTML tags from the content
+        $data['content'] = strip_tags($data['content']);
+    
         Note::create($data);
-
+    
         return redirect()->route('home');
     }
-
+    
 
     public function del(Note $note){
 
@@ -51,19 +54,21 @@ class NoteController extends Controller
         return view('pages.notes.edit', ['tags'=> $tags, 'note' => $note]);
     }
 
-    public function update(Note $note, Request $request){
-        
+    public function update(Note $note, Request $request) {
         $data = $request->validate([
             'title' => 'required',
             'content' => 'required',
             'tag_id' => 'required'
         ]);
-
-        
-        // update model and add the data into db
-        $note -> update($data);
+    
+        // Remove HTML tags from content
+        $data['content'] = strip_tags($data['content']);
+    
+        // Update model and add the data into db
+        $note->update($data);
         return redirect(route('home'));
     }
+    
 
     //////
     public function search(Request $request)

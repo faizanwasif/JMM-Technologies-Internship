@@ -39,7 +39,7 @@
     <script>
         // Your additional script content here
         document.addEventListener("DOMContentLoaded", function() {
-            console.log("Hello from DOMContentLoaded");
+            
             ClassicEditor
                 .create( document.querySelector( '#content' ) )
                 .catch( error => {

@@ -11,16 +11,27 @@
         <a href="{{ route('create-tags') }}" class="action-button">Create Tag</a>
     </div>
 
+    @if (session('found'))
+        <div class="found-message">
+            {{ session('found') }}
+        </div>
+   
     {{-- Display "not found" message if it exists --}}
-    @if (session('not_found'))
+    @elseif (session('not_found'))
         <div class="not-found-message">
             {{ session('not_found') }}
         </div>
     @endif
 
+
+    
+    
+
     {{-- Tags displaying div --}}
+    
     <div class="notes-displaying-container">
         @foreach ($tags as $tag)
+        <a href="{{ route('tag.showNote', ['tag', $tag->id]) }}">
             <div class="note-container">
                 <p>{{ $tag->name }}</p>
                 <div class="note-actions">
@@ -34,6 +45,7 @@
                     </a>
                 </div>
             </div>
+        </a>
         @endforeach
     </div>
 </div>

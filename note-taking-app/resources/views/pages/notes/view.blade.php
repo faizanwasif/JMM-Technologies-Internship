@@ -13,7 +13,8 @@
             <input type="image" src="/assets/remove.png" alt="delete" width="20" height="20">
         </form>
     </div>
-    <p class="note-content">{{ $note->content }}</p>
+    <p class="note-content">{{ strip_tags($note->content) }}</p>
+
     <div class="note-actions">
         <a href="{{ route('home') }}" class="action-button">Back to Notes</a>
     </div>
