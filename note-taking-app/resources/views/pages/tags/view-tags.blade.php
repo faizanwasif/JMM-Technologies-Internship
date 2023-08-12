@@ -15,12 +15,7 @@
         <div class="found-message">
             {{ session('found') }}
         </div>
-   
-    {{-- Display "not found" message if it exists --}}
-    @elseif (session('not_found'))
-        <div class="not-found-message">
-            {{ session('not_found') }}
-        </div>
+
     @endif
 
 

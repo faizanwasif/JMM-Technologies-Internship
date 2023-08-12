@@ -86,8 +86,9 @@ class TagController extends Controller
         $note = Note::where('id', $tag_id)->get();
     
         if ($note->isEmpty()) {
-            return redirect()->route('home')->with('not_found', 'No notes found.');
+            return redirect()->route('home', ['notes' => $note]);
         }
+        
         return redirect()->route('home', ['notes' => $note])->with('found', 'Match found.');
         
         
