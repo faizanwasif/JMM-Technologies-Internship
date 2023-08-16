@@ -18,12 +18,13 @@ class ContactSeeder extends Seeder
         $faker = Faker::create();
         
         for($i=0; $i<50; $i++){
-            DB::table('contacts')->insert([
+            Contact::create([
                 'name' => $faker->name,
                 'email' => $faker->email,
                 'phone' => $faker->phoneNumber,
                 'company' => $faker->company,
                 'user_id' => 1,
+                'tag_id' => rand(1, 5),
             ]);
 
         }   
