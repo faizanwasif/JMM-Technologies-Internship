@@ -1,0 +1,18 @@
+/* output.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Add any custom styling here */
+.bg-dark {
+    background-color: #1a202c;
+}
+.text-dark {
+    color: #2d3748;
+}
+.bg-action-blue {
+    background-color: #4a90e2;
+}
+.bg-action-green {
+    background-color: #48bb78;
+}

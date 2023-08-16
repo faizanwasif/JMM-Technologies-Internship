@@ -23,6 +23,7 @@ class ContactSeeder extends Seeder
                 'email' => $faker->email,
                 'phone' => $faker->phoneNumber,
                 'company' => $faker->company,
+                'image' => $faker->image('public/storage/images',200,280, null, false),
                 'user_id' => 1,
                 'tag_id' => rand(1, 5),
             ]);

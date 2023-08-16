@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\ContactListController::class, 'index'])->name('contact-list')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\ContactListController::class, 'index'])->name('contact-list')->middleware('auth');
