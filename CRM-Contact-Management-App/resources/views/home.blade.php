@@ -16,19 +16,19 @@
         
             </form>
         
-            <a href="#" class="ml-auto action-button"><img src="/assets/add-48-2.png" alt="add" style="width: 34px; height: 34px"></a>
+            <a href="{{ route('contact-create') }}" class="ml-auto action-button"><img src="/assets/add-48-2.png" alt="add" style="width: 34px; height: 34px"></a>
         </div>
         <div class="grid grid-cols-1 gap-8">
             @foreach ($contacts as $contact )
                 <div class="bg-gray-800 p-5 rounded shadow-md flex items-center">
-                    <img src="storage/images/{{ $contact->image }}" alt="person" class="rounded-full h-12 w-12 object-cover">
+                    <img src="storage/images/{{ $contact->image }}" alt="{{ $contact->name }}" class="rounded-full h-14 w-14 object-cover">
                     <div class="ml-4">
                         <p class="text-lg font-semibold">{{ $contact->name }}</p>
                         <p class="text-gray-400">{{ $contact->phone }}</p>
                         <p class="text-gray-400">{{ $contact->company }}</p>
                     </div>
                     <div class="ml-auto">
-                        <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-5 rounded-full text-sm transition duration-300">View</a>
+                        <a href="{{ route('contact-view', ['contact'=>$contact]) }}" class="bg-blue-500 hover:bg-blue-600 text-white py-3 px-5 rounded-full text-sm transition duration-300">View</a>
                         <a href="#" class="bg-green-500 hover:bg-green-600 text-white py-3 px-5 rounded-full text-sm transition duration-300 ml-2">Email</a>
                     </div>
                 </div>
