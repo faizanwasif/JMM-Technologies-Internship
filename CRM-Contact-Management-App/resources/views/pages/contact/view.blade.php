@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<a href="{{ route('contact-list') }}" >
+    <img src="../../assets/back.png" alt="back">
+</a>
 <div class="flex items-center justify-center h-screen">
     <div class="bg-gray-800 p-16 rounded-lg shadow-md text-center">
         <div class="mb-8">
@@ -24,6 +27,15 @@
             </form>
         </div>
     </div>
+    <div class="h-screen bg-gray-800 border m-10 mt-12 overflow-y-scroll max-h-60">
+        @foreach ($histories as $history)
+            <div class="p-4 text-left border-b">
+                <p class="text-gray-400">{{ $history->contact }}d</p>
+            </div>
+        @endforeach
+        
+    </div>
+    
 </div>
 
 
