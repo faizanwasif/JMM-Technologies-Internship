@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Tag;
+use App\Models\History;
+
+use App\Models\Activity;
 
 class ContactController extends Controller
 {
@@ -12,11 +15,20 @@ class ContactController extends Controller
     {
         $contact_id = request('contact');
 
-        // this will return the contact that belongs to the user based on the contact_id
+        $contact = auth()->user()->contacts()->findOrFail($contact_id);
+
+        $activities = $contact->activities;
+
+        $activity_ids = $activities->pluck('id')->toArray();
+
+        $histories = Activity::whereIn('id', $activity_ids)
+        ->where('status', 1)
+        ->get();
+
         
-        $contact = auth()->user()->contacts()->where('id', $contact_id)->first();
-        return view('pages.contact.view', compact('contact'));
+        return view('pages.contact.view', compact('contact', 'histories'));
     }
+
     public function create()
     {
         $tags = Tag::all();
@@ -37,4 +49,6 @@ class ContactController extends Controller
 
         return redirect()->route('contact-list');
     }
+
+    
 }

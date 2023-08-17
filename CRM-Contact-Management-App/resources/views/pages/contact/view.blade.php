@@ -28,11 +28,16 @@
         </div>
     </div>
     <div class="h-screen bg-gray-800 border m-10 mt-12 overflow-y-scroll max-h-60">
-        @foreach ($histories as $history)
-            <div class="p-4 text-left border-b">
-                <p class="text-gray-400">{{ $history->contact }}d</p>
-            </div>
-        @endforeach
+        @if (count($histories) != 0)
+            @foreach ($histories as $history)
+                <div class="p-4 text-left border-b">
+                    <p class="text-gray-400">{{ $history->activity }}d</p>
+                </div>
+            @endforeach
+        @else
+            <p>No History to show</p>
+        @endif
+        
         
     </div>
     

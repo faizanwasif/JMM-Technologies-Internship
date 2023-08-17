@@ -10,17 +10,11 @@ class History extends Model
     use HasFactory;
 
     protected $fillable=[
-        'contact_id',
-        'note_id',
+        'activity_id'
     ];
 
-    public function contact() : BelongsTo
+    public function activity()
     {
-        return $this->belongsTo(Contact::class, 'content_id');
-    }
-
-    public function note() : BelongsTo
-    {
-        return $this->belongsTo(Note::class, 'note_id');
+        return $this->belongsTo(Activity::class);
     }
 }

@@ -34,8 +34,14 @@ class Contact extends Model
         return $this->belongsTo(Tag::class);
     }
 
-    public function histories() : HasMany
+    public function activities(): HasMany
     {
-        return $this->hasMany(History::class);
+        return $this->hasMany(Activity::class);
     }
+
+    public function histories(): HasMany
+{
+    return $this->hasMany(History::class);
+}
+
 }

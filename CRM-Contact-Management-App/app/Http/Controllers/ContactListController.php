@@ -16,4 +16,23 @@ class ContactListController extends Controller
 
         return view('home', compact('contacts'));
     }
+
+    public function search(Request $request)
+    {
+        $searchQuery = request('search-contact');
+
+        $contacts = Contact::where('name', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('email', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('phone', 'like', '%' . $searchQuery . '%')
+                    ->orWhere('company', 'like', '%' . $searchQuery . '%')
+                    ->orderBy('name', 'asc')
+                    ->get();
+        
+        if ($contacts->isEmpty()) {
+            return redirect()->route('contact-list')->with('not_found', 'No matching notes found.');
+        }
+        
+        return view('home', ['contacts' => $contacts]);
+                        
+    }
 }

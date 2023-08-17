@@ -10,7 +10,8 @@ class HistoryController extends Controller
 {
     public function index()
     {
-        $histories = Contact::with('histories')->get();
+        $histories = auth()->user()->contacts()->activities()->histories()->get();
+        dd($histories);
         return view('pages.contact.view', compact('histories'));
     }
 }

@@ -15,8 +15,8 @@ class Note extends Model
         'contact_id'
     ];
 
-    public function histories() : HasMany
+    public function contact()
     {
-        return $this->hasMany(History::class);
+        return $this->belongsTo(Contact::class);
     }
 }
