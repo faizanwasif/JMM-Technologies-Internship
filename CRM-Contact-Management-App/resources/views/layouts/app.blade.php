@@ -18,11 +18,14 @@
 
     {{-- Style --}}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="/css/output.css"> --}}
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body class="bg-gray-900 text-white">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div id="main">
+                <span style="color: #333" class="text-3xl cursor-pointer" onclick="openNav()">&#9776;</span>
+            </div>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Contact Management
@@ -76,9 +79,43 @@
             </div>
         </nav>
 
+        {{-- NAV MENU --}}
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#" class="nav-item hover:bg-gray-700">
+                <img src="/assets/contact-2.png" alt="" class="inline-block mr-2" width="25" height="25">
+                Contacts
+            </a>
+            <a href="#" class="nav-item hover:bg-gray-700">
+                <img src="/assets/activity.png" alt="" class="inline-block mr-2" width="25" height="25">
+                Activities
+            </a>
+            <a href="#" class="nav-item hover:bg-gray-700">
+                <img src="/assets/tag.png" alt="" class="inline-block mr-2" width="25" height="25">
+                Tags
+            </a>
+            <a href="#" class="nav-item hover:bg-gray-700">
+                <img src="/assets/note.png" alt="" class="inline-block mr-2" width="25" height="25">
+                Notes
+            </a>
+            
+        </div>
+
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+        
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft= "0";
+        }
+    </script>
 </body>
 </html>
