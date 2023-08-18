@@ -82,7 +82,7 @@
         {{-- NAV MENU --}}
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#" class="nav-item hover:bg-gray-700">
+            <a href="{{ route('contact-list') }}" class="nav-item hover:bg-gray-700">
                 <img src="/assets/contact-2.png" alt="" class="inline-block mr-2" width="25" height="25">
                 Contacts
             </a>
@@ -90,7 +90,7 @@
                 <img src="/assets/activity.png" alt="" class="inline-block mr-2" width="25" height="25">
                 Activities
             </a>
-            <a href="#" class="nav-item hover:bg-gray-700">
+            <a href="{{ route('view-tags') }}" class="nav-item hover:bg-gray-700">
                 <img src="/assets/tag.png" alt="" class="inline-block mr-2" width="25" height="25">
                 Tags
             </a>

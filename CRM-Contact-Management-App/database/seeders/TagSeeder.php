@@ -19,6 +19,7 @@ class TagSeeder extends Seeder
         for($i=0; $i<5; $i++){
             Tag::create([
                 'name' => $faker->word,
+                'user_id' => 1,
             ]);
         }
     }

@@ -17,7 +17,7 @@ class ContactSeeder extends Seeder
     {
         $faker = Faker::create();
         
-        for($i=0; $i<50; $i++){
+        for($i=0; $i < 10; $i++){
             Contact::create([
                 'name' => $faker->name,
                 'email' => $faker->email,
@@ -25,7 +25,7 @@ class ContactSeeder extends Seeder
                 'company' => $faker->company,
                 'image' => $faker->image('public/storage/images',200,280, null, false),
                 'user_id' => 1,
-                'tag_id' => rand(1, 5),
+                'tag_id' => rand(2, 3),
             ]);
 
         }   

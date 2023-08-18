@@ -17,11 +17,11 @@ class ActivitySeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        for($i = 0; $i < 50; $i++) {
+        for($i = 0; $i < 25; $i++) {
             Activity::create([
-                'activity' => $faker->name,
+                'activity' => $faker->randomElement(['Call', 'Email', 'Meeting', 'Lunch', 'Coffee', 'Drinks', 'Dinner', 'Other']),
                 'status' => rand(0, 1),
-                'contact_id' => $faker->numberBetween(1, 50),
+                'contact_id' => 2,
             ]);
         }
     }

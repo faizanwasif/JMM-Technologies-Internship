@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 $route = 'App\Http\Controllers';
 
-Route::get('/', [App\Http\Controllers\ContactListController::class, 'index'])->name('contact-list')->middleware('auth');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\ContactListController::class, 'index'])->name('contact-list')->middleware('auth');
+// -------------------------------Contact------------------------------------------------------
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'showList'])->name('contact-list')->middleware('auth');
 
 // CRUD Contact
 Route::get('/contact/create', [App\Http\Controllers\ContactController::class, 'create'])->name('contact-create')->middleware('auth');
@@ -29,5 +30,27 @@ Route::get('/contact/view/{contact}', [App\Http\Controllers\ContactController::c
 Route::get('/contact/search', $route.'\ContactListController@search')->name('contact-search');
 Route::get('/contact/{contact}', $route.'\ContactListController@showContact')->name('contact-showNote');
 
+
+
+
 // CRUD History
 // Route::get('/home', $route . 'ContactController@showHistory')->name('history')->middleware('auth');
+
+// -------------------------------Tag------------------------------------------------------
+Route::get('/tags', $route.'\HomeController@showTag')->name('view-tags')->middleware('auth');
+
+// View Add Page
+Route::get('/tags/add', $route.'\TagController@create')->name('create-tags')->middleware('auth');
+Route::post('/tags/add', $route.'\TagController@add')->name('add-tags')->middleware('auth');
+
+// Delete 
+Route::delete('/tag/{tag}', $route.'\TagController@del')->name('tag-remove')->middleware('auth');
+
+// update data
+Route::get('/tag/edit/{tag}', $route.'\TagController@edit')->name('tag-edit');
+Route::put('/tag/edit/{tag}', $route.'\TagController@update')->name('tag-update');
+
+// filter data
+Route::get('/tag/search', $route.'\TagController@search')->name('tag-search');
+
+Route::get('/tag/{tag}', $route.'\TagController@showNote')->name('tag.showNote');

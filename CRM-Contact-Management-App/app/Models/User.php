@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function contacts():HasMany{
         return $this->hasMany(Contact::class);
     }
+
+    public function tags():HasMany{
+        return $this->hasMany(Tag::class);
+    }
 }
