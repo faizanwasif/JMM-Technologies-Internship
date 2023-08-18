@@ -16,11 +16,14 @@
         <div class="mb-16">
             <p class="text-gray-100 text-xl">Email: {{ $contact->email }}</p>
             <p class="text-gray-100 text-xl">Phone: {{ $contact->phone }}</p>
-            <p class="text-gray-100 text-xl">Tag: {{ $contact->tag->name }}</p>
+            @if ($contact->tag != null )
+                <p class="text-gray-100 text-xl">Tag: {{ $contact->tag->name }}</p>
+            @endif
+            
         </div>
         <div class="flex justify-center">
-            <a href="" class="bg-blue-500 hover:bg-blue-600 text-white py-2.5 px-12 rounded-full text-lg transition duration-300 mr-8">Edit</a>
-            <form action="" method="post">
+            <a href="{{ route('contact-edit', ['contact'=>$contact]) }}" class="bg-blue-500 hover:bg-blue-600 text-white py-2.5 px-12 rounded-full text-lg transition duration-300 mr-8">Edit</a>
+            <form action="{{ route('contact-remove', ['contact'=>$contact]) }}" method="post">
                 @csrf
                 @method('delete')
                 <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2.5 px-12 rounded-full text-lg transition duration-300">Delete</button>

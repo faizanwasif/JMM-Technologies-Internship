@@ -26,6 +26,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'showList'])->n
 Route::get('/contact/create', [App\Http\Controllers\ContactController::class, 'create'])->name('contact-create')->middleware('auth');
 Route::post('/contact/create', [App\Http\Controllers\ContactController::class, 'store'])->name('contact-store')->middleware('auth');
 Route::get('/contact/view/{contact}', [App\Http\Controllers\ContactController::class, 'index'])->name('contact-view')->middleware('auth');
+
+// Delete 
+Route::delete('/contact/{contact}', $route.'\ContactController@del')->name('contact-remove')->middleware('auth');
+
+// update data
+Route::get('/contact/edit/{contact}', $route.'\ContactController@edit')->name('contact-edit');
+Route::put('/contact/edit/{contact}', $route.'\ContactController@update')->name('contact-update');
+
+
 // filter contact
 Route::get('/contact/search', $route.'\ContactListController@search')->name('contact-search');
 Route::get('/contact/{contact}', $route.'\ContactListController@showContact')->name('contact-showNote');

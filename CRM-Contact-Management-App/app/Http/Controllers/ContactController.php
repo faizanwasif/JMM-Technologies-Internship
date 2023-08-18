@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Contact;
 use App\Models\Tag;
 use App\Models\History;
 
@@ -48,6 +48,36 @@ class ContactController extends Controller
         auth()->user()->contacts()->create($data);
 
         return redirect()->route('contact-list');
+    }
+
+    // data deletion
+    public function del(Contact $contact){
+
+        $contact->delete();
+
+        return redirect()->route('contact-list');
+    }
+
+     //data updation
+     public function edit(Contact $contact){
+        $tags = Tag::all();
+        
+        return view('pages.contact.edit', compact('contact', 'tags'));
+    }
+
+    public function update(Contact $contact, Request $request){
+        
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'company' => 'required',
+            'tag_id' => 'nullable',
+        ]);
+
+        // update model and add the data into db
+        $contact -> update($data);
+        return redirect(route('contact-list'));
     }
 
     
