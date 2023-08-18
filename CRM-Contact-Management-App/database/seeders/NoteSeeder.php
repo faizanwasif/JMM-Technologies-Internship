@@ -21,7 +21,7 @@ class NoteSeeder extends Seeder
             Note::create([
                 'title' => $faker->sentence(3),
                 'content' => $faker->paragraph(3),
-                'contact_id' => rand(4, 7),
+                'contact_id' => rand(1, 10),
             ]);
         }
     }

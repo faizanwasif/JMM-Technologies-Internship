@@ -16,9 +16,9 @@ class HistorySeeder extends Seeder
     {
         $faker = Faker::create();
 
-        for($i = 0; $i < 10; $i++) {
+        for($i = 0; $i < 100; $i++) {
             History::create([
-                'activity_id' => rand(1, 25),
+                'activity_id' => rand(1,20),
             ]);
         }
     }

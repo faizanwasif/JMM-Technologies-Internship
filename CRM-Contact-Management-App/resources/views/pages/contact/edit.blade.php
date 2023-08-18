@@ -12,7 +12,12 @@
     @endif
     <div class="container mx-auto py-10">
         <h1 class="text-2xl font-bold mb-6">Edit Contact</h1>
-        <a href="{{ route('contact-list') }}">Back</a>
+        <a href="{{ route('contact-view', ['contact'=>$contact]) }}" class="text-blue-500 hover:underline flex items-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back
+        </a>
         <form action="{{ route('contact-update' , ['contact'=>$contact]) }}" method="POST" enctype="multipart/form-data" class="bg-gray-800 p-5 rounded shadow-md">
             @csrf
             @method('put')
@@ -47,7 +52,7 @@
                 <select id="tag" name="tag_id" class="w-full px-3 py-2 rounded bg-gray-700 text-white focus:outline-none focus:bg-gray-900 transition duration-300">
                     
                     @if ($contact->tag != null )
-                        <option value="{{ $contact->tag->name }}">{{ $contact->tag->name }}</option>
+                        <option value="{{ $contact->tag->id }}">{{ $contact->tag->name }}</option>
                     @else
                         <option value="">No Tag</option>
                     @endif

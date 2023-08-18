@@ -13,20 +13,16 @@ class ContactController extends Controller
 {
     public function index()
     {
+
         $contact_id = request('contact');
-
         $contact = auth()->user()->contacts()->findOrFail($contact_id);
+        
+        $historyController = new HistoryController(); 
+        $activities = $historyController->index();
 
-        $activities = $contact->activities;
-
-        $activity_ids = $activities->pluck('id')->toArray();
-
-        $histories = Activity::whereIn('id', $activity_ids)
-        ->where('status', 1)
-        ->get();
 
         
-        return view('pages.contact.view', compact('contact', 'histories'));
+        return view('pages.contact.view', compact('contact', 'activities'));
     }
 
     public function create()
@@ -41,7 +37,9 @@ class ContactController extends Controller
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
+            'image' => 'nullable',
             'company' => 'required',
+            'tag_id' => 'nullable',
 
         ]);
 
@@ -72,6 +70,7 @@ class ContactController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'company' => 'required',
+            'image' => 'nullable',
             'tag_id' => 'nullable',
         ]);
 

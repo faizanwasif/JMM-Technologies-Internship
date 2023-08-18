@@ -40,8 +40,8 @@ class Contact extends Model
     }
 
     public function histories(): HasMany
-{
-    return $this->hasMany(History::class);
-}
+    {
+        return $this->hasMany(History::class);
+    }
 
 }

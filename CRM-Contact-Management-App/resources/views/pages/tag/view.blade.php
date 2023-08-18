@@ -45,6 +45,7 @@
                 @endforeach
             </div>
         @endif
+        {{-- For pagination --}}
         <div class="mt-4">
             {{ $tags->links() }}
         </div>

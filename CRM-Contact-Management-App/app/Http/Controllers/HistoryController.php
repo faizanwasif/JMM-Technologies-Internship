@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\History;
 use App\Models\Contact;
+use App\Models\Activity;
 
 class HistoryController extends Controller
 {
     public function index()
     {
-        $histories = auth()->user()->contacts()->activities()->histories()->get();
-        dd($histories);
-        return view('pages.contact.view', compact('histories'));
+        $history_ids = History::pluck('id')->toArray();
+        $activities = Activity::whereIn('id', $history_ids)->get();
+
+        
+
+        return $activities;
     }
 }
