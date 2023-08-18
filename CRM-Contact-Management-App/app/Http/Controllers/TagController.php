@@ -46,7 +46,7 @@ class TagController extends Controller
      //data updation
      public function edit(Tag $tag){
         
-        return view('pages.tags.edit', ['tag'=> $tag]);
+        return view('pages.tag.edit', ['tag'=> $tag]);
     }
 
     public function update(Tag $tag, Request $request){
@@ -71,7 +71,7 @@ class TagController extends Controller
             return redirect()->route('view-tags')->with('not_found', 'No matching notes found.');
         }
         
-        return view('pages.tag.view', ['tags' => $tag]);
+        return view('pages.tag.edit', ['tags' => $tag]);
                         
     }
 

@@ -91,7 +91,6 @@ class TagController extends Controller
         
         return redirect()->route('home', ['notes' => $note])->with('found', 'Match found.');
         
-        
     }
     
     
